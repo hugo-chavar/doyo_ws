@@ -17,7 +17,11 @@ defmodule WsServerWeb.Endpoint do
 
 
   socket "/socket", WsServerWeb.UserSocket,
-    websocket: true,
+    websocket: [
+      timeout: 300_000, # 5 minutes instead of the default 60 seconds
+      #   subprotocols: ["websocket"],  # Explicit subprotocols
+      #   check_origin: false,  # For development only
+    ],
     longpoll: false
 
     # Serve at "/" the static files from "priv/static" directory.
