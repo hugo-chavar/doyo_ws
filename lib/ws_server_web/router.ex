@@ -9,6 +9,10 @@ defmodule WsServerWeb.Router do
     pipe_through :api
   end
 
+  scope "/", WsServerWeb do
+    get "/broadcast_test", BroadcastController, :test
+  end
+
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:ws_server, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
