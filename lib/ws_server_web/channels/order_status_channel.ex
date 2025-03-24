@@ -1,9 +1,11 @@
 defmodule WsServerWeb.OrderStatusChannel do
   use WsServerWeb, :channel
+  require Logger
 
   @impl true
   def join("order_status:lobby", payload, socket) do
     if authorized?(payload) do
+      Logger.debug("Client joined order:status")
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}
