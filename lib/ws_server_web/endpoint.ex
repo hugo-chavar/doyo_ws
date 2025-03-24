@@ -18,9 +18,8 @@ defmodule WsServerWeb.Endpoint do
 
   socket "/socket", WsServerWeb.UserSocket,
     websocket: [
-      timeout: 300_000, # 5 minutes instead of the default 60 seconds
-      #   subprotocols: ["websocket"],  # Explicit subprotocols
-      #   check_origin: false,  # For development only
+      timeout: 600_000, # 10 minutes instead of the default 60 seconds
+      heartbeat_interval: 55_000  # Change interval (milliseconds)
     ],
     longpoll: false
 
